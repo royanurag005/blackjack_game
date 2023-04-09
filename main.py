@@ -21,7 +21,10 @@ for _ in range(2):
     user_card.append(deal_card())
     dealer_card.append(deal_card())
 def compare(user_mark,computer_mark):
-    if(user_mark==computer_mark):
+    #Correcting a bug
+    if(user_mark>21 and computer_mark>21):
+        print("You Lose")
+    elif(user_mark==computer_mark):
         print("Draw")
     elif(computer_mark==0):
         print("You Lose, Opponent has Blackjack")
