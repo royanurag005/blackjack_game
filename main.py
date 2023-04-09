@@ -2,6 +2,12 @@ import random
 import math
 from art import logo
 from replit import clear
+
+#Importing all the modules above
+
+def calc_score(list_cards):
+    return sum(list_cards)
+
 def calculate_score(cards):
     if(sum(cards)==21 and len(cards)==2):
         return 0
@@ -9,7 +15,7 @@ def calculate_score(cards):
         cards.remove(11)
         cards.append(1)
     return sum(cards)
-############### Our Blackjack House Rules #####################
+
 def deal_card():
     cards=[2,3,4,5,6,7,8,9,10,10,10,10,11]
     chosen_card=random.choice(cards)
@@ -38,6 +44,9 @@ def compare(user_mark,computer_mark):
         print("You Win")
     else:
         print("You Lose")
+        
+        
+############### Our Blackjack House Rules #####################
 ## The deck is unlimited in size. 
 ## There are no jokers. 
 ## The Jack/Queen/King all count as 10.
@@ -50,8 +59,7 @@ def compare(user_mark,computer_mark):
 
 #cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
-def calc_score(list_cards):
-    return sum(list_cards)
+
 #and returns the score. 
 #Look up the sum() function to help you do this.
 
@@ -74,7 +82,22 @@ def play_game():
                 user_card.append(deal_card())
             else:
                 is_game_over=True
- 
+    """
+    The User_cards have been picked and the program is ready to proceed picking cards for the computer
+    """
+    while(computer_score<17 and computer_score!=0):
+        dealer_card.append(deal_card())
+        computer_score=calculate_score(dealer_card)
+    print(f"Your final hand is : {user_card} and final score is : {user_score}")
+    print(f"Computer's final hand is : {dealer_card} and final score is : {computer_score}")  
+    compare(user_score,computer_score)  
+
+while input("Do you want to play a game of Blackjack? Type 'y' or 'n' :")=='y':
+    clear()
+    play_game()
+    
+    #Another attempt
+     
     # sum_my_deck=0
     # sum_dealers_deck=0
     
@@ -134,15 +157,5 @@ def play_game():
     #             to_continue=False
                 
     # print("Thank You !!!")   
-    while(computer_score<17 and computer_score!=0):
-        dealer_card.append(deal_card())
-        computer_score=calculate_score(dealer_card)
-    print(f"Your final hand is : {user_card} and final score is : {user_score}")
-    print(f"Computer's final hand is : {dealer_card} and final score is : {computer_score}")  
-    compare(user_score,computer_score)  
-
-while input("Do you want to play a game of Blackjack? Type 'y' or 'n' :")=='y':
-    clear()
-    play_game()
     
     
